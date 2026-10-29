@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
                         view.setBackgroundColor(Color.GRAY);
                         Toast.makeText(MainActivity.this, owoceArrayList.get(i),
                                 Toast.LENGTH_SHORT).show();
+                        owoceArrayList.remove(i);
+                        arrayAdapter.notifyDataSetChanged();
                     }
                 }
         );
