@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,12 +24,16 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     ArrayList<String> owoceArrayList;
     ArrayAdapter<String> arrayAdapter;
+    EditText editText;
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+        editText = findViewById(R.id.editTextText);
+        button = findViewById(R.id.button);
 
         listView = findViewById(R.id.ListView);
         owoceArrayList = new ArrayList<>();
@@ -58,6 +64,17 @@ public class MainActivity extends AppCompatActivity {
                             textView.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
                         }
 
+                    }
+                }
+        );
+
+        button.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String owoc = editText.getText().toString();
+                        owoceArrayList.add(owoc);
+                        arrayAdapter.notifyDataSetChanged();
                     }
                 }
         );
